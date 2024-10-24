@@ -67,6 +67,9 @@ module Elasticsearch
     end
 
     def verify_with_version_or_header(body, version, headers)
+      # agendor version
+      return @verified = true
+
       raise Elasticsearch::UnsupportedProductError if version.nil? || version < '6.0.0'
 
       if version == '7.x-SNAPSHOT' || Gem::Version.new(version) >= Gem::Version.new('7.14-SNAPSHOT')
